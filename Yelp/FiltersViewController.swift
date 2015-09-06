@@ -84,13 +84,25 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
 
     @IBAction func onSearchButton(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
-
+        var filters = [String : AnyObject]()
+        
+        var selectedCategories = [String]()
+        for (row, isSelected) in switchStates {
+            if isSelected {
+                selectedCategories.append(categories[row]["code"]!)
+            }
+        }
+        
+        if !selectedCategories.isEmpty {
+            filters["categories"] = selectedCategories
+        }
+        
+        delegate?.filtersViewController?(self, didUpdateFilters: filters)
     }
     
     
     @IBAction func onCancelButton(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
-        var filters = [String : AnyObject]()
-        delegate?.filtersViewController?(self, didUpdateFilters: filters)
+        
     }
 }
