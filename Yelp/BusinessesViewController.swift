@@ -10,38 +10,44 @@ import UIKit
 
 class BusinessesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FiltersViewControllerDelegate{
 
+    var searchBar : UISearchBar!
     var businesses: [Business]!
+    var searchSetting = SearchSetting()
+    
     
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 120
         
-        Business.searchWithTerm("Thai", completion: { (businesses: [Business]!, error: NSError!) -> Void in
-            self.businesses = businesses
-            self.tableView.reloadData()
-            
-            for business in businesses {
-                println(business.name!)
-                println(business.address!)
-            }
-        })
+        // initialize UISearchBar
+        searchBar = UISearchBar()
+        searchBar.delegate = self
         
-//        Business.searchWithTerm("Restaurants", sort: .Distance, categories: ["asianfusion", "burgers"], deals: true) { (businesses: [Business]!, error: NSError!) -> Void in
+        // add searchBar to navigation bar
+        searchBar.sizeToFit()
+        navigationItem.titleView = searchBar
+        
+//        Business.searchWithTerm("Thai", completion: { (businesses: [Business]!, error: NSError!) -> Void in
 //            self.businesses = businesses
+//            self.tableView.reloadData()
 //            
 //            for business in businesses {
 //                println(business.name!)
 //                println(business.address!)
 //            }
-//        }
-//        
+//        })
         
         
+        Business.searchWithSetting(searchSetting) {
+            (businesses: [Business]!, error: NSError!) -> Void in
+            self.businesses = businesses
+            self.tableView.reloadData()
+        }
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 120   
     }
 
     override func didReceiveMemoryWarning() {
@@ -76,13 +82,45 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func filtersViewController(filtersViewController: FiltersViewController, didUpdateFilters filters: [String : AnyObject]) {
-        var categories = filters["categories"] as? [String]
-        Business.searchWithTerm("Restaurants", sort:nil, categories:categories, deals:nil)
-            { (businesses:[Business]!, error:NSError!) -> Void in
-                self.businesses = businesses
-                self.tableView.reloadData()
-            }
+        
+        searchSetting.categories = filters["categories"] as? [String]
+        searchSetting.deals = filters["deals"] as? Bool
+        
+        let sortIndex = filters["sort"] as? Int
+        searchSetting.sort = searchSetting.sortMode[sortIndex!]
+        
+        Business.searchWithSetting(searchSetting) { (businesses: [Business]!, error: NSError!) -> Void in
+            self.businesses = businesses
+            self.tableView.reloadData()
+        }
     }
-   
+  }
 
+
+extension BusinessesViewController: UISearchBarDelegate {
+    func searchBarShouldBeginEditing(searchBar: UISearchBar) -> Bool {
+        searchBar.setShowsCancelButton(true, animated:true)
+        return true
+    }
+    
+    func searchBarShouldEndEditing(SearchBar: UISearchBar) -> Bool {
+        searchBar.setShowsCancelButton(false, animated: true)
+        return true
+    }
+    
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        searchSetting.searchString = searchBar.text
+        searchBar.resignFirstResponder()
+        
+        Business.searchWithSetting(searchSetting) { (businesses: [Business]!, error: NSError!) -> Void in
+            self.businesses = businesses
+            self.tableView.reloadData()
+        }
+    }
 }
