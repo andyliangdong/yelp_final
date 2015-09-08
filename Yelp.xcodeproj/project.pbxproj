@@ -20,7 +20,7 @@
 		B558A3181B9BC056009AD4F1 /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B558A3171B9BC056009AD4F1 /* SwitchCell.swift */; };
 		B558A31A1B9BC1DB009AD4F1 /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B558A3191B9BC1DB009AD4F1 /* FiltersViewController.swift */; };
 		B57312701B9E31F000FC9D7A /* DistanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B573126F1B9E31F000FC9D7A /* DistanceCell.swift */; };
-		B586D29C1B9CDAC300B440B8 /* README in Resources */ = {isa = PBXBuildFile; fileRef = B586D29B1B9CDAC300B440B8 /* README */; };
+		B586D29C1B9CDAC300B440B8 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = B586D29B1B9CDAC300B440B8 /* README.md */; };
 		B586D29E1B9CEF3500B440B8 /* SearchSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586D29D1B9CEF3500B440B8 /* SearchSetting.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,7 +53,7 @@
 		B558A3171B9BC056009AD4F1 /* SwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
 		B558A3191B9BC1DB009AD4F1 /* FiltersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
 		B573126F1B9E31F000FC9D7A /* DistanceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceCell.swift; sourceTree = "<group>"; };
-		B586D29B1B9CDAC300B440B8 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		B586D29B1B9CDAC300B440B8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		B586D29D1B9CEF3500B440B8 /* SearchSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchSetting.swift; sourceTree = "<group>"; };
 		BBD540129B10DFE60E8C24E2 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		C56EF0CE844A4EE5819C72AF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,7 +111,7 @@
 				222D8A6319CCF9F900D2DB53 /* LaunchScreen.xib */,
 				222D8A5819CCF9F900D2DB53 /* Supporting Files */,
 				222D8A7E19CCFAEF00D2DB53 /* Yelp-Bridging-Header.h */,
-				B586D29B1B9CDAC300B440B8 /* README */,
+				B586D29B1B9CDAC300B440B8 /* README.md */,
 			);
 			path = Yelp;
 			sourceTree = "<group>";
@@ -276,7 +276,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B586D29C1B9CDAC300B440B8 /* README in Resources */,
+				B586D29C1B9CDAC300B440B8 /* README.md in Resources */,
 				222D8A6019CCF9F900D2DB53 /* Main.storyboard in Resources */,
 				222D8A6519CCF9F900D2DB53 /* LaunchScreen.xib in Resources */,
 				222D8A6219CCF9F900D2DB53 /* Images.xcassets in Resources */,
