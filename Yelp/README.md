@@ -14,11 +14,8 @@ Required
 [1] The filters table should be organized into sections as in the mock.
 [1] You can use the default UISwitch for on/off states. Optional: implement a custom switch
 [2] Clicking on the "Search" button should dismiss the filters page and trigger the search w/ the new filter settings.
-<<<<<<< HEAD
-[1] Display some of the available Yelp categories (choose any 3-4 that you want).
-=======
 [0.2] Display some of the available Yelp categories (choose any 3-4 that you want).
->>>>>>> ldong-layout-problem
+
 Optional
 
 [2] Search results page
