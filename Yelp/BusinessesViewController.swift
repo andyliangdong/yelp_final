@@ -83,11 +83,12 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
     
     func filtersViewController(filtersViewController: FiltersViewController, didUpdateFilters filters: [String : AnyObject]) {
         
+        searchSetting.searchString = ""
         searchSetting.categories = filters["categories"] as? [String]
         searchSetting.deals = filters["deals"] as? Bool
-        
         let sortIndex = filters["sort"] as? Int
         searchSetting.sort = searchSetting.sortMode[sortIndex!]
+        searchSetting.radius = filters["radius"] as? Double
         
         Business.searchWithSetting(searchSetting) { (businesses: [Business]!, error: NSError!) -> Void in
             self.businesses = businesses
@@ -116,6 +117,7 @@ extension BusinessesViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         searchSetting.searchString = searchBar.text
+        searchSetting.categories = []
         searchBar.resignFirstResponder()
         
         Business.searchWithSetting(searchSetting) { (businesses: [Business]!, error: NSError!) -> Void in

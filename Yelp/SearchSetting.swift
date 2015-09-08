@@ -15,7 +15,7 @@ struct SearchSetting {
     var searchString: String?
     var categories: [String]?
     var sort: YelpSortMode?
-    
+    var radius: Double?
     var deals: Bool?
     
     
@@ -24,6 +24,7 @@ struct SearchSetting {
         searchString = "Restaurants"
         categories = ["chinese", "thai"]
         sort = .Distance
+        radius = 40000.0
         deals = false
     }
    

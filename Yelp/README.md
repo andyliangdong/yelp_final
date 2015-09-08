@@ -12,16 +12,22 @@ Required
 [1] Filter page. Unfortunately, not all the filters are supported in the Yelp API.
 [2] The filters you should actually have are: category, sort (best match, distance, highest rated), radius (meters), deals (on/off).
 [1] The filters table should be organized into sections as in the mock.
-[ ] You can use the default UISwitch for on/off states. Optional: implement a custom switch
+[1] You can use the default UISwitch for on/off states. Optional: implement a custom switch
 [2] Clicking on the "Search" button should dismiss the filters page and trigger the search w/ the new filter settings.
+<<<<<<< HEAD
 [1] Display some of the available Yelp categories (choose any 3-4 that you want).
+=======
+[0.2] Display some of the available Yelp categories (choose any 3-4 that you want).
+>>>>>>> ldong-layout-problem
 Optional
 
-[ ] Search results page
+[2] Search results page
 [ ] Infinite scroll for restaurant results
 [ ] Implement map view of restaurant results
-[ ] Filter page
+[3] Filter page
 [ ] Radius filter should expand as in the real Yelp app
 [ ] Categories should show a subset of the full list with a "See All" row to expand. Category list is here: http://www.yelp.com/developers/documentation/category_list (Links to an external site.)
 [ ] Implement the restaurant detail page.
-Walkthrough
+
+
+![Walkthrough](yelp_andydong_v7.gif)
