@@ -26,4 +26,4 @@ Optional
 [ ] Implement the restaurant detail page.
 
 
-Walkthrough(yelp_andydong_v7.gif)
+![Walkthrough](yelp_andydong_v7.gif)
