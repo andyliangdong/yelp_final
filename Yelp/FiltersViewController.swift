@@ -18,7 +18,7 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var dealSwitch: UISwitch!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var sortSegmentConroller: UISegmentedControl!
-    
+    @IBOutlet weak var distanceFilterSegmentController: UISegmentedControl!
    
     weak var delegate: FiltersViewControllerDelegate?
     
@@ -27,6 +27,8 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
     var radius : [[String:String]]!
     
     let sortType = ["Best Match", "Distance", "Rating"]
+    let mileInMeter : Double = 1609.34
+    var distanceType = [0.3, 1.0, 5.0, 20.0]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,11 +45,6 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
             ["name" : "Salad", "code": "salad"],
             ["name" : "Swiss Food", "code": "swissfood"],
             ["name" : "Taiwanese", "code": "taiwanese"]]
-        
-        radius = [["name":"0.3 miles", "code":"0.3"],
-            ["name":"1 mile", "code":"1"],
-            ["name":"5 miles", "code":"5"],
-            ["name":"20 miles", "code":"20"]]
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -116,6 +113,7 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
         filters["deals"] = dealSwitch.on
         
         filters["sort"] = sortSegmentConroller.selectedSegmentIndex
+        filters["radius"] = mileInMeter * distanceType[distanceFilterSegmentController.selectedSegmentIndex]
         
         delegate?.filtersViewController?(self, didUpdateFilters: filters)
     }
